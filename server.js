@@ -66,7 +66,7 @@ app.post('/api/v1/favorites/new', async (request, response) => {
   try {
     const newFavorite = await database('favorites').insert(favorite);
     console.log('newFavorite: ', newFavorite);
-    response.status(201).json({ message: 'New favorite added!' });
+    response.status(201).json({ id: favorite.id });
   } catch (error) {
     response.status(500).json({ error });
   }
@@ -83,7 +83,7 @@ app.delete('/api/v1/favorites/:id', async (request, response) => {
       return response.status(404).send({ error: `There is no favorite with 'id' of '${favoriteId}'.  Please check the entered id and try again.` });
     }
 
-    response.status(200).json({ message: `Favorite with id ${favoriteId} successfully deleted` });
+    response.status(200).json({ message: `${favoriteId} successfully deleted` });
   } catch (error) {
     response.status(500).json({ error });
   }
