@@ -6,5 +6,6 @@ CREATE TABLE favorites (
     earthDate VARCHAR NOT NULL,
     sol INTEGER NOT NULL,
     cameraName VARCHAR NOT NULL,
-    cameraFullName VARCHAR NOT NULL
+    cameraFullName VARCHAR NOT NULL,
+    isFavorite BOOLEAN
 );

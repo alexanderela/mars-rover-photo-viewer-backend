@@ -52,7 +52,8 @@ app.post('/api/v1/favorites/new', async (request, response) => {
     'earthDate',
     'sol',
     'cameraName',
-    'cameraFullName'
+    'cameraFullName',
+    'isFavorite'
   ];
 
   for (const requiredParam of requiredParams) {
@@ -64,8 +65,7 @@ app.post('/api/v1/favorites/new', async (request, response) => {
   }
 
   try {
-    const newFavorite = await database('favorites').insert(favorite);
-    console.log('newFavorite: ', newFavorite);
+    await database('favorites').insert(favorite);
     response.status(201).json({ id: favorite.id });
   } catch (error) {
     response.status(500).json({ error });
@@ -80,7 +80,7 @@ app.delete('/api/v1/favorites/:id', async (request, response) => {
       .del();
 
     if (numDeleted === 0) {
-      return response.status(404).send({ error: `There is no favorite with 'id' of '${favoriteId}'.  Please check the entered id and try again.` });
+      return response.status(404).send({ error: `There is no favorite with 'id' of ${favoriteId}.  Please check the entered id and try again.` });
     }
 
     response.status(200).json({ message: `${favoriteId} successfully deleted` });

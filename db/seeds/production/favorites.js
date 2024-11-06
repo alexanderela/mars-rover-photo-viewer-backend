@@ -14,7 +14,8 @@ const createFavorites = async (knex, favorite) => {
     earthDate: favorite.earthDate,
     sol: favorite.sol,
     cameraName: favorite.cameraName,
-    cameraFullName: favorite.cameraFullName
+    cameraFullName: favorite.cameraFullName,
+    isFavorite: favorite.isFavorite
   }, 'id');
 };
 

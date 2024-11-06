@@ -31,17 +31,4 @@ const favorites = [
   }
 ];
 
-export const favoriteToAdd = {
-  id: 8888888,
-  name: 'TEST',
-  roverName: 'TEST',
-  imgSrc: 'TEST02M',
-  earthDate: 'TEST',
-  sol: 8888,
-  cameraName: 'TEST',
-  cameraFullName: 'TEST',
-  created_at: 'TEST',
-  updated_at: 'TEST'
-};
-
 module.exports = favorites;
