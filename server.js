@@ -89,4 +89,19 @@ app.delete('/api/v1/favorites/:id', async (request, response) => {
   }
 });
 
+app.delete('/api/v1/favorites', async (request, response) => {
+  try {
+    const numDeleted = await database('favorites')
+      .del();
+
+    if (numDeleted === 0) {
+      return response.status(404).send({ error: 'There are no favorites to delete.  Please add some favorites first and try again.' });
+    }
+
+    response.status(200).json({ message: 'All favorites successfully deleted' });
+  } catch (error) {
+    response.status(500).json({ error });
+  }
+});
+
 module.exports = app;
